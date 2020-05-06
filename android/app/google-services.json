@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "109639576594",
+    "firebase_url": "https://wishwecouldtalk-a9466.firebaseio.com",
+    "project_id": "wishwecouldtalk-a9466",
+    "storage_bucket": "wishwecouldtalk-a9466.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109639576594:android:bb6ce78e65eb0be79cbccb",
+        "android_client_info": {
+          "package_name": "com.doom.wishwecouldtalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "109639576594-0800kmtirb2l9fj36gm1d54pk13c9lf7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.doom.wishwecouldtalk",
+            "certificate_hash": "95de7386eb46aad3e0908d4fa09af1f9f11b5cf6"
+          }
+        },
+        {
+          "client_id": "109639576594-aflqaodh2alat5atltarjpj3r61u8c10.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANeOxCT-0aNaBUYzPPXaR592RtceH6HXE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "109639576594-aflqaodh2alat5atltarjpj3r61u8c10.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
