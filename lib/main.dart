@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wishwecouldtalk/authentication_bloc/authentication_bloc.dart';
-import 'package:wishwecouldtalk/repositories/repositories.dart';
-import 'package:wishwecouldtalk/home_screen.dart';
-import 'package:wishwecouldtalk/login/login.dart';
-import 'package:wishwecouldtalk/splash_screen.dart';
-import 'package:wishwecouldtalk/simple_bloc_delegate.dart';
+
+import 'authentication_bloc/authentication_bloc.dart';
+import 'core/utilities/utils.dart';
+import 'home/home_screen.dart';
+import 'login/login.dart';
+import 'repositories/repositories.dart';
+import 'splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

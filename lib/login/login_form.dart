@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wishwecouldtalk/repositories/repositories.dart';
-import 'package:wishwecouldtalk/authentication_bloc/authentication_bloc.dart';
-import 'package:wishwecouldtalk/login/login.dart';
+
+import '../authentication_bloc/authentication_bloc.dart';
+import '../repositories/repositories.dart';
+import 'login.dart';
 
 class LoginForm extends StatefulWidget {
   final UserRepository _userRepository;

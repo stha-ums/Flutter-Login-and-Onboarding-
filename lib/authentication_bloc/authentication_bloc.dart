@@ -1,8 +1,10 @@
 import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:wishwecouldtalk/repositories/repositories.dart';
+
+import '../repositories/repositories.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';

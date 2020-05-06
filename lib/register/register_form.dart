@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wishwecouldtalk/authentication_bloc/authentication_bloc.dart';
-import 'package:wishwecouldtalk/register/register.dart';
+
+import '../authentication_bloc/authentication_bloc.dart';
+import 'register.dart';
 
 class RegisterForm extends StatefulWidget {
   State<RegisterForm> createState() => _RegisterFormState();

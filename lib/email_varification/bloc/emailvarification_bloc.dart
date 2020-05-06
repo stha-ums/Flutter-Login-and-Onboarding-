@@ -8,7 +8,7 @@ part 'emailvarification_state.dart';
 
 class EmailvarificationBloc extends Bloc<EmailvarificationEvent, EmailvarificationState> {
   @override
-  EmailvarificationState get initialState => EmailvarificationInitial();
+  EmailvarificationState get initialState => Uninitialized();
 
   @override
   Stream<EmailvarificationState> mapEventToState(

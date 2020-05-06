@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wishwecouldtalk/repositories/repositories.dart';
-import 'package:wishwecouldtalk/password_reset/passwordreset.dart';
+
+import '../password_reset/passwordreset.dart';
+import '../repositories/repositories.dart';
 
 class PasswordResetButton extends StatelessWidget {
   final UserRepository _userRepository;

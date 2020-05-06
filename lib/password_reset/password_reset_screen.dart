@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wishwecouldtalk/repositories/repositories.dart';
-import 'package:wishwecouldtalk/password_reset/passwordreset.dart';
+
+import '../repositories/repositories.dart';
+import 'passwordreset.dart';
 
 
 class PasswordResetScreen extends StatelessWidget {

@@ -1,14 +1,13 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-
-import 'passwordreset_event.dart';
-import 'passwordreset_state.dart';
-
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:wishwecouldtalk/repositories/repositories.dart';
-import 'package:wishwecouldtalk/validators.dart';
+
+import '../../core/utilities/utils.dart';
+import '../../repositories/repositories.dart';
+import 'passwordreset_event.dart';
+import 'passwordreset_state.dart';
 
 class PasswordresetBloc extends Bloc<PasswordresetEvent, PasswordresetState> {
   final UserRepository _userRepository;

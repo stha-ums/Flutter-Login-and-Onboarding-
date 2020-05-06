@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wishwecouldtalk/password_reset/passwordreset.dart';
+
+import 'passwordreset.dart';
 
 class PasswordResetForm extends StatefulWidget {
   State<PasswordResetForm> createState() => _PasswordResetForm();
