@@ -70,7 +70,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       await _userRepository.signInWithGoogle();
       yield LoginState.success();
     } catch (_) {
-      yield LoginState.failure();
+      yield LoginState.failure(failureMessage: 'Login with google failed');
     }
   }
 
@@ -80,8 +80,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }) async* {
     yield LoginState.loading();
     try {
-      await _userRepository.signInWithCredentials(email, password);
+      String status = await _userRepository.signInWithCredentials(email, password);
+      if (status == null){
       yield LoginState.success();
+      }
+      else 
+        yield LoginState.failure(failureMessage: status);
     } catch (_) {
       yield LoginState.failure();
     }

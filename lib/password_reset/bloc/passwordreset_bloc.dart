@@ -60,7 +60,7 @@ class PasswordresetBloc extends Bloc<PasswordresetEvent, PasswordresetState> {
       
     yield PasswordresetState.loading();
     try {
-      dynamic sucessStatus = await _userRepository.resetPassword(
+      String sucessStatus = await _userRepository.resetPassword(
         email: email,
       );
       if(sucessStatus == null){

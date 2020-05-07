@@ -7,6 +7,7 @@ class RegisterState {
   final bool isSubmitting;
   final bool isSuccess;
   final bool isFailure;
+  final String errorMessage;
 
   bool get isFormValid => isEmailValid && isPasswordValid;
 
@@ -16,6 +17,7 @@ class RegisterState {
     @required this.isSubmitting,
     @required this.isSuccess,
     @required this.isFailure,
+    @required this.errorMessage,
   });
 
   factory RegisterState.empty() {
@@ -25,6 +27,7 @@ class RegisterState {
       isSubmitting: false,
       isSuccess: false,
       isFailure: false,
+      errorMessage :' ',
     );
   }
 
@@ -35,16 +38,18 @@ class RegisterState {
       isSubmitting: true,
       isSuccess: false,
       isFailure: false,
+      errorMessage :' ',
     );
   }
 
-  factory RegisterState.failure() {
+  factory RegisterState.failure({String failureMessage}) {
     return RegisterState(
       isEmailValid: true,
       isPasswordValid: true,
       isSubmitting: false,
       isSuccess: false,
       isFailure: true,
+      errorMessage :(failureMessage==null)?' ':failureMessage,
     );
   }
 
@@ -55,6 +60,7 @@ class RegisterState {
       isSubmitting: false,
       isSuccess: true,
       isFailure: false,
+      errorMessage :' ',
     );
   }
 
@@ -68,6 +74,7 @@ class RegisterState {
       isSubmitting: false,
       isSuccess: false,
       isFailure: false,
+      errorMessage :' ',
     );
   }
 
@@ -78,6 +85,7 @@ class RegisterState {
     bool isSubmitting,
     bool isSuccess,
     bool isFailure,
+    errorMessage :' ',
   }) {
     return RegisterState(
       isEmailValid: isEmailValid ?? this.isEmailValid,
@@ -85,6 +93,7 @@ class RegisterState {
       isSubmitting: isSubmitting ?? this.isSubmitting,
       isSuccess: isSuccess ?? this.isSuccess,
       isFailure: isFailure ?? this.isFailure,
+      errorMessage :errorMessage ?? this.errorMessage,
     );
   }
 
@@ -96,6 +105,7 @@ class RegisterState {
       isSubmitting: $isSubmitting,
       isSuccess: $isSuccess,
       isFailure: $isFailure,
+      errorMessage:$errorMessage,
     }''';
   }
 }

@@ -42,7 +42,7 @@ class AuthenticationBloc
       yield Unauthenticated();
     }
   }
-
+  //this methods gets called when user logs in
   Stream<AuthenticationState> _mapLoggedInToState() async* {
     yield Authenticated(await _userRepository.getUser());
   }

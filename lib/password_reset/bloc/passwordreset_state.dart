@@ -46,7 +46,8 @@ class PasswordresetState{
       isSubmitting: true, 
       isSuccess: false, 
       isFailure: true,
-      errorMessage: (failureMessage==null)?' ':failureMessage,);
+      errorMessage: (failureMessage==null)?' ':failureMessage,
+    );
   }
   factory PasswordresetState.success(){
     return PasswordresetState(

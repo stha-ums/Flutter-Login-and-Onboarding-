@@ -41,6 +41,7 @@ class App extends StatelessWidget {
             return LoginScreen(userRepository: _userRepository);
           }
           if (state is Authenticated) {
+            // if(await _userRepository.checkVerified()){}
             return HomeScreen(name: state.displayName);
           }
           return SplashScreen();
