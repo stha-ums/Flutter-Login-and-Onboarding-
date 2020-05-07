@@ -81,6 +81,7 @@ class _LoginFormState extends State<LoginForm> {
             padding: EdgeInsets.all(20.0),
             child: Form(
               child: ListView(
+                physics: NeverScrollableScrollPhysics(),
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 20),
@@ -123,7 +124,6 @@ class _LoginFormState extends State<LoginForm> {
                               : null,
                         ),
                         GoogleLoginButton(),
-                        CreateAccountButton(userRepository: _userRepository),
                         Center(child: Text('-OR-')),
                         PasswordResetButton(userRepository: _userRepository),
                         // ResetAccountButton(userRepository:_userRepository),

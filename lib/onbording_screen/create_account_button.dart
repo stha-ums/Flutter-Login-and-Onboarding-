@@ -13,9 +13,9 @@ class CreateAccountButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      child: Text(
-        'Create an Account',
+    return RaisedButton(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
       ),
       onPressed: () {
         Navigator.of(context).push(
@@ -24,6 +24,11 @@ class CreateAccountButton extends StatelessWidget {
           }),
         );
       },
+      child: Text('Create an account'),
+      color: Colors.red,
     );
   }
 }
+
+
+

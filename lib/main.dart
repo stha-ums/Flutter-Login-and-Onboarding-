@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'authentication_bloc/authentication_bloc.dart';
 import 'core/utilities/utils.dart';
 import 'home/home_screen.dart';
-import 'login/login.dart';
+import 'onbording_screen/onboadring_Screen.dart';
 import 'repositories/repositories.dart';
 import 'splash_screen.dart';
 
@@ -38,7 +38,7 @@ class App extends StatelessWidget {
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           if (state is Unauthenticated) {
-            return LoginScreen(userRepository: _userRepository);
+            return OnboardingScreen(userRepository: _userRepository);
           }
           if (state is Authenticated) {
             // if(await _userRepository.checkVerified()){}

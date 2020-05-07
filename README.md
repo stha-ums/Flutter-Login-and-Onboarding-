@@ -1,6 +1,6 @@
 # wishwecouldtalk
 
-A new Flutter project.
+Develpoed by someone who wishes to talk to someone.
 
 ## Getting Started
 

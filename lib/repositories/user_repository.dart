@@ -63,7 +63,6 @@ class UserRepository {
   ///sends error message if occured other wise null
   Future<String> signUp({String email, String password}) async {
     String errorMessage;
-    //TODO:check if this runs
     try{
       await _firebaseAuth.createUserWithEmailAndPassword(
       email: email,
