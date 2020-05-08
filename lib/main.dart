@@ -13,6 +13,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   BlocSupervisor.delegate = SimpleBlocDelegate();
   final UserRepository userRepository = UserRepository();
+  
   runApp(
     BlocProvider(
       create: (context) => AuthenticationBloc(
