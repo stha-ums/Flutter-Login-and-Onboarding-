@@ -45,6 +45,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       yield* _mapPasswordChangedToState(event.password);
     } else if (event is Submitted) {
       yield* _mapFormSubmittedToState(event.email, event.password);
+    }else if (event is PasswordChangedSecond){
+      yield* _mapFromPasswordChangedSecond(event.password,event.password2);
     }
   }
 
@@ -57,8 +59,19 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   Stream<RegisterState> _mapPasswordChangedToState(String password) async* {
     yield state.update(
       isPasswordValid: Validators.isValidPassword(password),
+      hasEightCharacter: Validators.hasEightCharacter(password),
+      hasOneSpecialCharacter:Validators.hasOneSpecialCharacter(password) ,
+      hasOneNumber: Validators.hasOneNumber(password),
+      hasOneUpperCase: Validators.hasOneUpperCase(password),
     );
   }
+
+    Stream<RegisterState> _mapFromPasswordChangedSecond(String password,String password2) async* {
+    yield state.update(
+      ispasswordMatched: Validators.isPasswordMatched(password,password2),
+    );
+  }
+
 
   Stream<RegisterState> _mapFormSubmittedToState(
     String email,

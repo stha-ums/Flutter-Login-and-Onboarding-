@@ -8,6 +8,11 @@ class LoginState {
   final bool isSuccess;
   final bool isFailure;
   final String errorMessage;
+  final bool hasOneUpperCase;
+  final bool hasOneSpecialCharacter;
+  final bool hasOneNumber;
+  final bool hasEightCharacter;
+  final bool isKeyboardVisible;
 
   bool get isFormValid => isEmailValid && isPasswordValid;
 
@@ -18,6 +23,11 @@ class LoginState {
     @required this.isSuccess,
     @required this.isFailure,
     @required this.errorMessage,
+    @required this.hasOneUpperCase,
+    @required this.hasOneSpecialCharacter,
+    @required this.hasOneNumber,
+    @required this.hasEightCharacter,  
+    @required this.isKeyboardVisible,  
   });
 
   factory LoginState.empty() {
@@ -28,6 +38,11 @@ class LoginState {
       isSuccess: false,
       isFailure: false,
       errorMessage:' ',
+      hasOneUpperCase:false,
+      hasOneSpecialCharacter:false,
+      hasOneNumber:false,
+      hasEightCharacter:false,
+      isKeyboardVisible:false, 
     );
   }
 
@@ -38,7 +53,12 @@ class LoginState {
       isSubmitting: true,
       isSuccess: false,
       isFailure: false,
-      errorMessage:' '
+      errorMessage:' ',
+      hasOneUpperCase:true,
+      hasOneSpecialCharacter:true,
+      hasOneNumber:true,
+      hasEightCharacter:true,
+      isKeyboardVisible:true,
     );
   }
 
@@ -50,6 +70,11 @@ class LoginState {
       isSuccess: false,
       isFailure: true,
       errorMessage:(failureMessage==null)?' ':failureMessage,
+      hasOneUpperCase:true,
+      hasOneSpecialCharacter:true,
+      hasOneNumber:true,
+      hasEightCharacter:true,
+      isKeyboardVisible:true,
     );
   }
 
@@ -60,13 +85,23 @@ class LoginState {
       isSubmitting: false,
       isSuccess: true,
       isFailure: false,
-      errorMessage:' '
+      errorMessage:' ',
+      hasOneUpperCase:true,
+      hasOneSpecialCharacter:true,
+      hasOneNumber:true,
+      hasEightCharacter:true,
+      isKeyboardVisible:true,
     );
   }
 
   LoginState update({
     bool isEmailValid,
     bool isPasswordValid,
+    bool hasOneUpperCase,
+    bool hasOneSpecialCharacter,
+    bool hasOneNumber,
+    bool hasEightCharacter, 
+    bool isKeyboardVisible,   
   }) {
     return copyWith(
       isEmailValid: isEmailValid,
@@ -74,7 +109,12 @@ class LoginState {
       isSubmitting: false,
       isSuccess: false,
       isFailure: false,
-      errorMessage:' '
+      errorMessage:' ',
+      hasOneUpperCase:hasOneUpperCase,
+      hasOneSpecialCharacter:hasOneSpecialCharacter,
+      hasOneNumber:hasOneNumber,
+      hasEightCharacter:hasEightCharacter,  
+      isKeyboardVisible:isKeyboardVisible,    
     );
   }
 
@@ -86,6 +126,11 @@ class LoginState {
     bool isSuccess,
     bool isFailure,
     String errorMessage,
+    bool hasOneUpperCase,
+    bool hasOneSpecialCharacter,
+    bool hasOneNumber,
+    bool hasEightCharacter,    
+    bool isKeyboardVisible,
   }) {
     return LoginState(
       isEmailValid: isEmailValid ?? this.isEmailValid,
@@ -94,6 +139,12 @@ class LoginState {
       isSuccess: isSuccess ?? this.isSuccess,
       isFailure: isFailure ?? this.isFailure,
       errorMessage: errorMessage ?? this.isFailure,
+      hasOneUpperCase:hasOneUpperCase??this.hasOneUpperCase,
+      hasOneSpecialCharacter:hasOneSpecialCharacter??this.hasOneSpecialCharacter,
+      hasOneNumber:hasOneNumber??this.hasOneNumber,
+      hasEightCharacter:hasEightCharacter??this.hasEightCharacter,
+      isKeyboardVisible:isKeyboardVisible??this.isKeyboardVisible,
+
     );
   }
 
@@ -105,7 +156,12 @@ class LoginState {
       isSubmitting: $isSubmitting,
       isSuccess: $isSuccess,
       isFailure: $isFailure,
-      errorMessage: $errorMessage
+      errorMessage: $errorMessage,
+      hasOneUpperCase:$hasOneUpperCase,
+      hasOneSpecialCharacter:$hasOneSpecialCharacter,
+      hasOneNumber:$hasOneNumber,
+      hasEightCharacter:$hasEightCharacter,      
+      isKeyboardVisible:$isKeyboardVisible,
     }''';
   }
 }

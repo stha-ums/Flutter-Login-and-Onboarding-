@@ -14,8 +14,13 @@ class PasswordResetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
+      textColor: Colors.red,
       child: Text(
-        'reset password',
+        'Forgot password?',
+        style: TextStyle(
+          color: Colors.red[400],
+          letterSpacing: 1
+        ),
       ),
       onPressed: () {
         Navigator.of(context).push(
@@ -27,3 +32,4 @@ class PasswordResetButton extends StatelessWidget {
     );
   }
 }
+

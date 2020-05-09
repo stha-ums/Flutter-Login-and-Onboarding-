@@ -32,6 +32,19 @@ class PasswordChanged extends LoginEvent {
   String toString() => 'PasswordChanged { password: $password }';
 }
 
+class KeyboardVisibilityChanged extends LoginEvent{
+  final bool visible;
+
+  KeyboardVisibilityChanged({this.visible});
+
+  @override
+  List<Object> get props => [visible];
+
+  @override
+  String toString() => 'PasswordChanged { password: $visible }';
+}
+
+
 class Submitted extends LoginEvent {
   final String email;
   final String password;

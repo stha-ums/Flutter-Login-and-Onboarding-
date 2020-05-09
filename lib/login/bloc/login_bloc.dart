@@ -50,8 +50,16 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         email: event.email,
         password: event.password,
       );
+    }else if(event is KeyboardVisibilityChanged){
+      yield* _mapKeyboardVisibilityChangedToState(event.visible);
     }
   }
+  Stream<LoginState> _mapKeyboardVisibilityChangedToState(bool visible) async* {
+    yield state.update(
+      isKeyboardVisible: visible
+    );
+  }
+
 
   Stream<LoginState> _mapEmailChangedToState(String email) async* {
     yield state.update(
@@ -62,6 +70,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Stream<LoginState> _mapPasswordChangedToState(String password) async* {
     yield state.update(
       isPasswordValid: Validators.isValidPassword(password),
+      hasEightCharacter: Validators.hasEightCharacter(password),
+      hasOneSpecialCharacter:Validators.hasOneSpecialCharacter(password) ,
+      hasOneNumber: Validators.hasOneNumber(password),
+      hasOneUpperCase: Validators.hasOneUpperCase(password),
     );
   }
 

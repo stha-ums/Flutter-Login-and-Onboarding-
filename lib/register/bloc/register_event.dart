@@ -20,6 +20,19 @@ class EmailChanged extends RegisterEvent {
   String toString() => 'EmailChanged { email :$email }';
 }
 
+class PasswordChangedSecond extends RegisterEvent{
+  final String password;
+  final String password2;
+
+  PasswordChangedSecond({this.password, this.password2});
+  
+  @override
+  List<Object> get props => [password,password2];
+  
+  @override
+  String toString() => '''checking match { password 1 : $password , password 2: $password2  ''';
+}
+
 class PasswordChanged extends RegisterEvent {
   final String password;
 

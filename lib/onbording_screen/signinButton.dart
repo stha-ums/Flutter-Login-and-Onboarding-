@@ -17,7 +17,7 @@ class SignInButton extends StatelessWidget {
     return RaisedButton(
       elevation: 0,
        padding: EdgeInsets.all(Dimensions.blockHeight*3.5),
-      shape: RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(Dimensions.blockHeight*40),
         ) ,
       child: Text(

@@ -7,18 +7,15 @@ import 'login.dart';
 class GoogleLoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return RaisedButton.icon(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30.0),
-      ),
-      icon: Icon(FontAwesomeIcons.google, color: Colors.white),
-      onPressed: () {
+    return IconButton(
+      splashColor: Colors.transparent,
+      iconSize: 30,
+      color: Colors.red,
+      icon: Icon(FontAwesomeIcons.google), onPressed: (){
         BlocProvider.of<LoginBloc>(context).add(
           LoginWithGooglePressed(),
         );
-      },
-      label: Text('Sign in with Google', style: TextStyle(color: Colors.white)),
-      color: Colors.redAccent,
-    );
+        }
+      );
   }
 }
