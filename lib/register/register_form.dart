@@ -13,22 +13,21 @@ class RegisterForm extends StatefulWidget {
 class _RegisterFormState extends State<RegisterForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _passwordControllerSecond = TextEditingController();
-  final FocusNode _focusNodeEmail =FocusNode();
+  final TextEditingController _passwordControllerSecond =
+      TextEditingController();
+  final FocusNode _focusNodeEmail = FocusNode();
   final FocusNode _focusNodePassword = FocusNode();
   final FocusNode _focusNodeConfirmedPassword = FocusNode();
 
   final GlobalKey formKey = GlobalKey();
 
-
   RegisterBloc _registerBloc;
 
   bool get isPopulated =>
-      _emailController.text.isNotEmpty && 
+      _emailController.text.isNotEmpty &&
       _passwordController.text.isNotEmpty &&
-      _passwordControllerSecond.text.isNotEmpty&&
-      _passwordController.text == _passwordControllerSecond.text
-      ;
+      _passwordControllerSecond.text.isNotEmpty &&
+      _passwordController.text == _passwordControllerSecond.text;
 
   bool isRegisterButtonEnabled(RegisterState state) {
     return state.isFormValid && isPopulated && !state.isSubmitting;
@@ -45,7 +44,7 @@ class _RegisterFormState extends State<RegisterForm> {
 
   @override
   Widget build(BuildContext context) {
-     Dimensions().init(context);
+    Dimensions().init(context);
     return BlocListener<RegisterBloc, RegisterState>(
       listener: (context, state) {
         if (state.isSubmitting) {
@@ -65,7 +64,8 @@ class _RegisterFormState extends State<RegisterForm> {
         }
         if (state.isSuccess) {
           BlocProvider.of<AuthenticationBloc>(context).add(LoggedIn());
-          Navigator.of(context).popUntil(ModalRoute.withName('/')); //to pop all the routes
+          Navigator.of(context)
+              .popUntil(ModalRoute.withName('/')); //to pop all the routes
         }
         if (state.isFailure) {
           Scaffold.of(context)
@@ -98,8 +98,11 @@ class _RegisterFormState extends State<RegisterForm> {
                     focusNode: _focusNodeEmail,
                     controller: _emailController,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email,
-                      color:_focusNodeEmail.hasPrimaryFocus?Colors.black:Colors.grey ,
+                      prefixIcon: Icon(
+                        Icons.email,
+                        color: _focusNodeEmail.hasPrimaryFocus
+                            ? Colors.black
+                            : Colors.grey,
                       ),
                       labelText: 'Email',
                     ),
@@ -114,8 +117,11 @@ class _RegisterFormState extends State<RegisterForm> {
                     focusNode: _focusNodePassword,
                     controller: _passwordController,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock,
-                      color: _focusNodePassword.hasPrimaryFocus?Colors.black:Colors.grey,
+                      prefixIcon: Icon(
+                        Icons.lock,
+                        color: _focusNodePassword.hasPrimaryFocus
+                            ? Colors.black
+                            : Colors.grey,
                       ),
                       labelText: 'Password',
                     ),
@@ -130,8 +136,11 @@ class _RegisterFormState extends State<RegisterForm> {
                     focusNode: _focusNodeConfirmedPassword,
                     controller: _passwordControllerSecond,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock,
-                      color: _focusNodeConfirmedPassword.hasPrimaryFocus?Colors.black:Colors.grey,
+                      prefixIcon: Icon(
+                        Icons.lock,
+                        color: _focusNodeConfirmedPassword.hasPrimaryFocus
+                            ? Colors.black
+                            : Colors.grey,
                       ),
                       labelText: 'Confirm Password',
                     ),
@@ -139,14 +148,18 @@ class _RegisterFormState extends State<RegisterForm> {
                     autocorrect: false,
                     autovalidate: true,
                     validator: (_) {
-                      return !state.ispasswordMatched ? "Password Doesn't match" : null;
+                      return !state.ispasswordMatched
+                          ? "Password Doesn't match"
+                          : null;
                     },
                   ),
                   Padding(
-                      padding:  EdgeInsets.only(left:Dimensions.safeBlockWidth*10,right:Dimensions.safeBlockWidth*10),
-                      child: PasswordValidationIndicator(state:state),
-                    ),
-                                      
+                    padding: EdgeInsets.only(
+                        left: Dimensions.safeBlockWidth * 10,
+                        right: Dimensions.safeBlockWidth * 10),
+                    child: PasswordValidationIndicator(state: state),
+                  ),
+
                   RegisterButton(
                     onPressed: isRegisterButtonEnabled(state)
                         ? _onFormSubmitted
@@ -184,16 +197,20 @@ class _RegisterFormState extends State<RegisterForm> {
     );
     //added this so when password field one is changed it checks for sencond too.
     _registerBloc.add(
-      PasswordChangedSecond(password: _passwordController.text,
-        password2: _passwordControllerSecond.text),
+      PasswordChangedSecond(
+          password: _passwordController.text,
+          password2: _passwordControllerSecond.text),
     );
   }
-void _onPasswordChangeSecond(){
+
+  void _onPasswordChangeSecond() {
     _registerBloc.add(
-      PasswordChangedSecond(password: _passwordController.text,
-        password2: _passwordControllerSecond.text),
+      PasswordChangedSecond(
+          password: _passwordController.text,
+          password2: _passwordControllerSecond.text),
     );
-}
+  }
+
   void _onFormSubmitted() {
     _registerBloc.add(
       Submitted(

@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:wishwecouldtalk/models/user_model.dart';
+import 'package:wishwecouldtalk/repositories/repositories.dart';
 
 class UserRepository {
   final FirebaseAuth _firebaseAuth;
@@ -112,13 +114,26 @@ class UserRepository {
   Future<String> getUserID() async {
     return (await _firebaseAuth.currentUser()).uid;
   }
-
+  
   ///get the email of logged in user
-  Future<String> getUser() async {
+  Future<String> getUserEmail() async {
     return (await _firebaseAuth.currentUser()).email;
   }
+  ///this functions saves the user data to firestore USERDATA collection with 
+  ///userId document after the user is paired
+  ///
+  Future<void> getAndSaveUserData() async{
+    UserData _userdata;
+    _userdata.userId = (await _firebaseAuth.currentUser()).uid ;
+    _userdata.email= (await _firebaseAuth.currentUser()).email;
+    _userdata.userName = (await _firebaseAuth.currentUser()).displayName;
+    _userdata.imageUrl = (await _firebaseAuth.currentUser()).photoUrl ;   
 
-  //update Password of logged in user 
+    var _userdataRepository = UserDataRepository(userData: _userdata);
+    _userdataRepository.saveUserData();
+  }
+
+  ///update Password of logged in user 
   ///returns String of error message if occured other wise returns null
   Future <String> updatePassword({String newPassword}) async {
     String errorMessage;
@@ -136,6 +151,7 @@ class UserRepository {
           errorMessage ="The account is not found";
           break;
         case "ERROR_REQUIRES_RECENT_LOGIN":
+        //TODO: make user relogin
           errorMessage ="Recent timing error occured please relogin";
           break;
         case "ERROR_OPERATION_NOT_ALLOWED":
@@ -189,6 +205,7 @@ class UserRepository {
           break;
         case "ERROR_REQUIRES_RECENT_LOGIN":
           errorMessage = "Error occured, try logging in again";
+          //TODO: make user relogin
           break;
         case "ERROR_OPERATION_NOT_ALLOWED":
           errorMessage = "Email & Password accounts are not enabled.";
@@ -204,6 +221,29 @@ class UserRepository {
 
     (await _firebaseAuth.currentUser()).updateProfile(userUpdateInfo);
     return 'errorMessage';
+
+  }
+
+  ///deletes Account and sigs out
+  Future <void> deleteAccount() async{
+    AuthCredential credential;
+    //TODO credintial provide
+    (await _firebaseAuth.currentUser()).reauthenticateWithCredential(credential).then((value) => {});
+
+    (await _firebaseAuth.currentUser()).delete();
+  }
+
+  Future<void> reacuthenticate() async{
+//var user = firebase.auth().currentUser;
+// var credential;
+
+// // Prompt the user to re-provide their sign-in credentials
+
+// user.reauthenticateWithCredential(credential).then(function() {
+//   // User re-authenticated.
+// }).catch(function(error) {
+//   // An error happened.
+// });
 
   }
 

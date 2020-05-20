@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wishwecouldtalk/repositories/repositories.dart';
 
 import '../authentication_bloc/authentication_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
-  final String name;
+  final UserDataRepository userDataRepository;
 
-  HomeScreen({Key key, @required this.name}) : super(key: key);
+  const HomeScreen({Key key, this.userDataRepository}) 
+  : assert (userDataRepository != null), 
+    super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +32,7 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Center(child: Text('Welcome $name!')),
+          Center(child: Text('Welcome ${userDataRepository.userData.userId}')),
         ],
       ),
     );
