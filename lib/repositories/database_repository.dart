@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:wishwecouldtalk/models/user_model.dart';
 
 
-
 class UserDataRepository{
   final Firestore _firestore;
   final UserData userData;
@@ -52,21 +51,26 @@ class UserDataRepository{
     return this.userData.isPaired??false;
   }
 
-  //this is called once the random code is generated
+  ///this is called once the random code is generated
   Future<void> savePairingCode(int pairingCode) async {
     //TODO: add document path
-    await _firestore.collection("PairingCode").document().setData(
+    await _firestore.collection("PairingCode").document(userData.userId).setData(
       { 
         'UserId': pairingCode,
         'pairingCode': userData.userId
       }
     );
   }
-  //this will call when user enters the pairing code
+  ///this will get the pairing code from the server if available
+  Future < Map<String, dynamic>> geOwnPairingCode() async{
+    DocumentSnapshot documentSnapshot  = await _firestore.collection("PairingCode").document(userData.userId).get();
+    return documentSnapshot.data;
+  }
+  ///this will call when user enters the pairing code
   Future<String> searchForPair(int pairingCode) async{
-    var _pairingcode =  _firestore.collection('PairingCode');
-    if(_pairingcode != null){
-      await _pairingcode.where('pairingCode' ,isEqualTo: pairingCode)
+    var _pairingCode =  _firestore.collection('PairingCode');
+    if(_pairingCode != null){
+      await _pairingCode.where('pairingCode' ,isEqualTo: pairingCode)
       .getDocuments()
       .then((querySnapshot){
         var map = querySnapshot.documents[0].data;

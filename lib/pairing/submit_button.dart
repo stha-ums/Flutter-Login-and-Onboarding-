@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wishwecouldtalk/login/login_screen.dart';
 import 'package:wishwecouldtalk/style/dimentions.dart';
-// import '../repositories/repositories.dart';
 
-class SignInButton extends StatelessWidget {
-  // final UserRepository _userRepository;
-
-  // SignInButton({Key key, @required UserRepository userRepository})
-  //     : assert(userRepository != null),
-  //       _userRepository = userRepository,
-  //       super(key: key);
+class SubmitInvitationCodeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +13,7 @@ class SignInButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(Dimensions.blockHeight*40),
         ) ,
       child: Text(
-        'Sign in', 
+        'Submit', 
         style: TextStyle(
         color:Colors.white,
         fontSize: Dimensions.blockWidth*7,
@@ -31,11 +23,8 @@ class SignInButton extends StatelessWidget {
         ),
 
       onPressed:() {
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) {
-            return LoginScreen();
-          }),
-        );
+        
+        //bloc add event
       },
       color: Colors.red,
       );

@@ -11,17 +11,19 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
+  RegisterBloc _registerBloc;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passwordControllerSecond =
-      TextEditingController();
+  TextEditingController();
+
   final FocusNode _focusNodeEmail = FocusNode();
   final FocusNode _focusNodePassword = FocusNode();
   final FocusNode _focusNodeConfirmedPassword = FocusNode();
 
   final GlobalKey formKey = GlobalKey();
 
-  RegisterBloc _registerBloc;
+
 
   bool get isPopulated =>
       _emailController.text.isNotEmpty &&
@@ -37,6 +39,7 @@ class _RegisterFormState extends State<RegisterForm> {
   void initState() {
     super.initState();
     _registerBloc = BlocProvider.of<RegisterBloc>(context);
+
     _emailController.addListener(_onEmailChanged);
     _passwordController.addListener(_onPasswordChanged);
     _passwordControllerSecond.addListener(_onPasswordChangeSecond);
@@ -185,6 +188,7 @@ class _RegisterFormState extends State<RegisterForm> {
   }
 
   void _onEmailChanged() {
+
     _registerBloc.add(
       EmailChanged(email: _emailController.text),
     );

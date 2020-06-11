@@ -26,7 +26,7 @@ class PairingBloc extends Bloc<PairingEvent, PairingState> {
       yield* _mapPairToState();
     }else if(event is CancelPair){
       yield* _mapCancelPairToState();
-    }
+    } 
   }
 
   Stream<PairingState> _mapJustLoggedInToState(String userID) async*{

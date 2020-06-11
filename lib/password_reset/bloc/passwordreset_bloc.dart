@@ -10,6 +10,7 @@ import 'passwordreset_event.dart';
 import 'passwordreset_state.dart';
 
 class PasswordresetBloc extends Bloc<PasswordresetEvent, PasswordresetState> {
+
   final UserRepository _userRepository;
 
   PasswordresetBloc({@required userRepository})

@@ -11,6 +11,8 @@ class Validators {
   static final RegExp _hasOneSpecialCharacter =RegExp(r'^(?=(.*[\W]){1,}).*$');
   static final RegExp _hasEightCharacter = RegExp(r'^(?=.{8,}$).*$');
 
+  static final RegExp _onlyNumber = RegExp(r'^\d$');
+
   static isValidEmail(String email) {
     return _emailRegExp.hasMatch(email);
   }
@@ -38,4 +40,7 @@ class Validators {
     return _hasEightCharacter.hasMatch(password);
   }
 
+static bool hasOnlyNumbers(String input){
+  return _onlyNumber.hasMatch(input);
+}
 }

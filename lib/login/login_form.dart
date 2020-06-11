@@ -4,19 +4,11 @@ import 'package:keyboard_visibility/keyboard_visibility.dart';
 import 'package:wishwecouldtalk/core/shared_widgets/shared_widgets.dart';
 import 'package:wishwecouldtalk/register/register_screen.dart';
 import 'package:wishwecouldtalk/style/dimentions.dart';
-
-
 import '../authentication_bloc/authentication_bloc.dart';
-import '../repositories/repositories.dart';
+
 import 'login.dart';
 
 class LoginForm extends StatefulWidget {
-  final UserRepository _userRepository;
-
-  LoginForm({Key key, @required UserRepository userRepository})
-      : assert(userRepository != null),
-        _userRepository = userRepository,
-        super(key: key);
 
   State<LoginForm> createState() => _LoginFormState();
 }
@@ -28,9 +20,7 @@ class _LoginFormState extends State<LoginForm> {
   final FocusNode _passwordFocusNode = FocusNode();
   final FocusNode _emailFocusNode = FocusNode();
   final KeyboardVisibilityNotification _keyboardVisibility = KeyboardVisibilityNotification();
-  
 
-  UserRepository get _userRepository => widget._userRepository;
 
   bool get isPopulated =>
       _emailController.text.isNotEmpty && _passwordController.text.isNotEmpty;
@@ -43,6 +33,7 @@ class _LoginFormState extends State<LoginForm> {
   void initState() {
     super.initState();
     _loginBloc = BlocProvider.of<LoginBloc>(context);
+
     _emailController.addListener(_onEmailChanged);
     _passwordController.addListener(_onPasswordChanged);
     _keyboardVisibility.addNewListener(
@@ -63,7 +54,6 @@ class _LoginFormState extends State<LoginForm> {
             ..hideCurrentSnackBar()
             ..showSnackBar(
               SnackBar(
-                
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [Text('${state.errorMessage}'), Icon(Icons.error)],
@@ -138,7 +128,7 @@ class _LoginFormState extends State<LoginForm> {
                                     onTap: (){
                                       Navigator.of(context).push(
                                       MaterialPageRoute(builder: (context) {
-                                        return RegisterScreen(userRepository: _userRepository);
+                                        return RegisterScreen();
                                       }),
                                     );
                                     },
@@ -210,7 +200,7 @@ class _LoginFormState extends State<LoginForm> {
                       padding: EdgeInsets.only(left:Dimensions.safeBlockWidth*3,right: Dimensions.safeBlockWidth*10),
                       child: Row(
                         children: [
-                          PasswordResetButton(userRepository: _userRepository),
+                          PasswordResetButton(),
                         ],
                       ),
                     ),

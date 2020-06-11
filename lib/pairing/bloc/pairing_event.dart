@@ -22,6 +22,7 @@ class JusLoggedIn extends PairingEvent{
   }
 }
 
+
 class Pair extends PairingEvent{}
 
 class CancelPair extends PairingEvent{

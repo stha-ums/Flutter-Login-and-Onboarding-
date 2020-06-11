@@ -3,17 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../models/onboarding/onbording_message.dart';
-import '../repositories/repositories.dart';
+// import '../repositories/repositories.dart';
 import '../style/dimentions.dart';
 import 'bloc/onboarding.dart';
 import 'create_account_button.dart';
 import 'signinButton.dart'; 
 
 class OnboardingScreen extends StatefulWidget {
-  final UserRepository _userRepository;
-  const OnboardingScreen({Key key, userRepository}) 
-    :_userRepository =userRepository, 
-    assert (userRepository != null), super(key: key);
+  // final UserRepository _userRepository;
+  // const OnboardingScreen({Key key, userRepository}) 
+  //   :_userRepository =userRepository, 
+  //   assert (userRepository != null), super(key: key);
 
   @override
   _OnboardingScreenState createState() => _OnboardingScreenState();
@@ -23,7 +23,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerPr
   TabController _tabController;
   OnboardingBloc _onboardingBloc;
   
-  UserRepository get _userRepository => widget._userRepository;
+  // UserRepository get _userRepository => widget._userRepository;
 
   @override 
   void initState() {
@@ -84,12 +84,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> with SingleTickerPr
             SizedBox(height: Dimensions.blockHeight*5,), 
             Padding(
               padding: EdgeInsets.only(left:Dimensions.safeBlockWidth*20,top: Dimensions.safeBlockWidth*10,right: Dimensions.safeBlockWidth*20),
-              child: SignInButton(userRepository :_userRepository),
+              child: SignInButton(),
             ),
             SizedBox(height: Dimensions.safeBlockHeight*3,),
             Padding(
               padding: EdgeInsets.only(left:Dimensions.safeBlockWidth*20,bottom: Dimensions.safeBlockWidth*20,right: Dimensions.safeBlockWidth*20),
-              child: CreateAccountButton(userRepository :_userRepository),
+              child: CreateAccountButton(),
             ),
           ],
         );

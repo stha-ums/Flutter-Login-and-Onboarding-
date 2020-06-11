@@ -5,12 +5,12 @@ import '../register/register.dart';
 import '../repositories/repositories.dart';
 
 class CreateAccountButton extends StatelessWidget {
-  final UserRepository _userRepository;
+  // final UserRepository _userRepository;
 
-  CreateAccountButton({Key key, @required UserRepository userRepository})
-      : assert(userRepository != null),
-        _userRepository = userRepository,
-        super(key: key);
+  // CreateAccountButton({Key key, @required UserRepository userRepository})
+  //     : assert(userRepository != null),
+  //       _userRepository = userRepository,
+  //       super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class CreateAccountButton extends StatelessWidget {
       onPressed: () {
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) {
-            return RegisterScreen(userRepository: _userRepository);
+            return RegisterScreen();
           }),
         );
       },

@@ -36,6 +36,7 @@ dependencies:
   flare_flutter: ^2.0.3
   keyboard_visibility: ^0.5.6
   shared_preferences: ^0.5.7+2
+  flutter_svg: ^0.17.4
 
   get_it: ^4.0.2
 
@@ -62,6 +63,7 @@ flutter:
     - assets/
     - assets/onbording/
     - assets/json/
+    - assets/pairingScreen/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

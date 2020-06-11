@@ -8,7 +8,7 @@ import 'home/home_screen.dart';
 import 'injection_contatiner.dart' as di;
 import 'onbording_screen/onboadring_Screen.dart';
 import 'pairing/pairing.dart';
-import 'repositories/repositories.dart';
+//import 'repositories/repositories.dart';
 import 'splash_screen.dart';
 import 'style/style.dart';
 
@@ -22,22 +22,21 @@ void main() async {
   runApp(
     BlocProvider(
      create: (context) => di.sl<AuthenticationBloc>()..add(AppStarted()),
-
       // create: (context) => AuthenticationBloc(
       //   userRepository: userRepository,
       // )..add(AppStarted()),
-      child: App(userRepository: di.sl<UserRepository>()),
+      child: App(),
     ),
   );
 }
 
 class App extends StatelessWidget {
-  final UserRepository _userRepository;
+  // final UserRepository _userRepository;
 
-  App({Key key, @required UserRepository userRepository})
-      : assert(userRepository != null),
-        _userRepository = userRepository,
-        super(key: key);
+  // App({Key key, @required UserRepository userRepository})
+  //     : assert(userRepository != null),
+  //       _userRepository = userRepository,
+  //       super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,16 +46,13 @@ class App extends StatelessWidget {
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           if (state is Unauthenticated) {
-            return OnboardingScreen(userRepository: _userRepository);
+            return OnboardingScreen();
           }
           if (state is Authenticated) {
-            final UserDataRepository _userDataRepository = UserDataRepository();
-            //here userdatarepository shoud be initialzed
             return BlocProvider(
               create: (context) =>
-                  PairingBloc(userDataRepository: _userDataRepository)
-                    ..add(JusLoggedIn(userID: state.userID)),
-              child: PairOrHome(userRepository: _userRepository),
+                    di.sl<PairingBloc>()..add(JusLoggedIn(userID: state.userID)),
+              child: PairOrHome(),
             );
           }
           return SplashScreen();
@@ -67,12 +63,6 @@ class App extends StatelessWidget {
 }
 
 class PairOrHome extends StatelessWidget {
-  final UserRepository _userRepository;
-
-  const PairOrHome({Key key, userRepository})
-      : _userRepository = userRepository,
-        assert(userRepository != null),
-        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +77,7 @@ class PairOrHome extends StatelessWidget {
           //need to send somthing
           if (state is NotPaired)
             //generate random number of 8 digit and save to the server
-            return PairingSceen(userRepository: _userRepository);
+            return PairingSceen();
           //no need to send anything
           return SplashScreen();
         },

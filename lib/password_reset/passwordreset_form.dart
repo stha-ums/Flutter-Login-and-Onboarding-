@@ -8,10 +8,9 @@ class PasswordResetForm extends StatefulWidget {
 }
 
 class _PasswordResetForm extends State<PasswordResetForm> {
+  PasswordresetBloc _passwordresetBloc;
   final TextEditingController _emailController = TextEditingController();
 
-
-  PasswordresetBloc _passwordresetBloc;
 
   bool get isPopulated =>
       _emailController.text.isNotEmpty ;
@@ -84,7 +83,6 @@ class _PasswordResetForm extends State<PasswordResetForm> {
           return 
             Form(
               child: ListView(
-              
                 children: <Widget>[
                   TextFormField(
                     controller: _emailController,

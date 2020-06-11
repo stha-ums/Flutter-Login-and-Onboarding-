@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wishwecouldtalk/repositories/repositories.dart';
 
-import '../repositories/repositories.dart';
+import '../injection_contatiner.dart' as di;
 import 'passwordreset.dart';
 
 
 class PasswordResetScreen extends StatelessWidget {
-  final UserRepository _userRepository;
-
-  PasswordResetScreen({Key key, @required UserRepository userRepository})
-      : assert(userRepository != null),
-        _userRepository = userRepository,
-        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +14,12 @@ class PasswordResetScreen extends StatelessWidget {
       appBar: AppBar(title: Text('Reset Password')),
       body: Center(
         child: BlocProvider<PasswordresetBloc>(
-          create: (context) => PasswordresetBloc(userRepository: _userRepository),
+          create: (context) => PasswordresetBloc(userRepository: di.sl<UserRepository>()), //TODO: why this doesnt work like the way it is suppose to be
           child: PasswordResetForm(),
         ),
       ),
     );
   }
 }
+
+//di.sl<PasswordresetBloc>()

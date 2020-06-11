@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -15,9 +16,11 @@ import 'repositories/database_repository.dart';
 import 'repositories/user_repository.dart';
 import 'style/dimentions.dart';
 
-final sl = GetIt.instance;
+ final sl = GetIt.instance;
 
 Future <void> init() async {
+
+  
   //! authentication
   //bloc
   sl.registerFactory(
@@ -61,7 +64,9 @@ Future <void> init() async {
       userData: sl(),
     ),
   );
-
+  sl.registerLazySingleton(
+    () => Firestore.instance,
+  );
   //userdata model
   sl.registerLazySingleton(
     () => UserData(),
@@ -85,6 +90,8 @@ Future <void> init() async {
   sl.registerSingleton(
     Dimensions(),
   );
+
+  
 
   //! external
 

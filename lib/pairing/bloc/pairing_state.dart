@@ -29,3 +29,9 @@ class Paired extends PairingState{
 
 class NotPaired extends PairingState{}
 
+class ScreenState extends PairingState{
+  final bool keyboardVisibility;
+
+  ScreenState(this.keyboardVisibility);
+}
+
