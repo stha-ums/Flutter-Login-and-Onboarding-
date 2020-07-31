@@ -1,6 +1,6 @@
 # 
 Flutter-Login-and-Onboarding
-Develpoed by someone who wishes to talk to someone.
+
 
 ## Getting Started
 
